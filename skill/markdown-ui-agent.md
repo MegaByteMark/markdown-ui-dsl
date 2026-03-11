@@ -34,12 +34,13 @@ When asked to parse or generate a UI spec, you MUST use the following strict syn
   `| Value 1  | Value 2  |`
 
 ## Frontmatter & Theming (Optional)
-Use YAML frontmatter at the top of a `.ui.md` spec to specify styling rules, target frameworks, or reference a separate design system markdown document.
+Use YAML frontmatter at the top of a `.ui.md` spec to specify styling rules, target frameworks, code component linking, or reference a separate design system markdown document.
 
 ```yaml
 ---
 framework: Next.js + TailwindCSS + Shadcn UI
 theme: ./design-system.md
+component: src/components/LoginForm.tsx
 ---
 ```
 
@@ -47,3 +48,5 @@ theme: ./design-system.md
 1. If the user asks for a UI layout, ONLY output the Markdown-UI DSL. Do not write HTML, React, or CSS unless explicitly asked to translate a `.ui.md` file.
 2. If given a `.ui.md` spec, read the components deterministically. Translate rows into flex-row/grid columns, and columns into flex-col/standard block flow depending on the requested frontend framework.
 3. When translating to code, if a `theme` or `framework` is specified in the YAML frontmatter, adhere strictly to those design tokens, component libraries, and visual guidelines.
+4. **Auto-Synchronization:** If you are asked to modify or update an existing `.ui.md` wireframe file, you MUST automatically locate and update the corresponding frontend code component to reflect the new wireframe changes. Always check the `component:` key in the YAML frontmatter to find the exact target file.
+5. **Code Headers:** When generating a new frontend component from a `.ui.md` file, always inject a standardized comment at the top of the generated code file pointing back to its spec (e.g., `// UI Spec: wireframes/login-form.ui.md`).

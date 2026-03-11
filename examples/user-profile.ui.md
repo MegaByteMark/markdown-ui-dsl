@@ -1,6 +1,7 @@
 ---
 framework: Next.js + TailwindCSS + Shadcn UI
 theme: ./design-system.md
+component: src/components/UserProfile.tsx
 ---
 
 ||| COLUMN |||

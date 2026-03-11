@@ -1,6 +1,7 @@
 ---
 framework: React + Tailwind CSS
 theme: ./design-system.md
+component: src/components/LoginForm.tsx
 ---
 
 ||| COLUMN |||
