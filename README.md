@@ -52,6 +52,29 @@ curl -o .cursorrules https://raw.githubusercontent.com/MegaByteMark/markdown-ui-
 curl -o .clinerules https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skill/markdown-ui-agent.md
 ```
 
+### 3. Claude Code
+Claude Code automatically looks for a `CLAUDE.md` file in the root of your project to understand project-specific rules and conventions. You can append the skill directly to it:
+```bash
+curl -s https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skill/markdown-ui-agent.md >> CLAUDE.md
+```
+
+### 4. Gemini CLI
+For Gemini CLI, download the skill into your project and pass it as a system prompt or context flag when running your generation commands:
+```bash
+mkdir -p .ai/skills
+curl -o .ai/skills/markdown-ui-agent.md https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skill/markdown-ui-agent.md
+
+# Example usage:
+# gemini query "Build the login UI" --system-prompt .ai/skills/markdown-ui-agent.md
+```
+
+### 5. GPT Codex (and other CLI agents)
+Download the instruction file into your workspace and reference it as a system prompt when initiating your AI codebase session:
+```bash
+mkdir -p .ai/skills
+curl -o .ai/skills/markdown-ui-agent.md https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skill/markdown-ui-agent.md
+```
+
 ## Recommended Project Structure
 To keep your specs organized and cleanly separated from your application code, we highly recommend creating a `wireframes` folder at the root of your project to hold your DSL designs and your design system file:
 
@@ -80,9 +103,11 @@ Here is a brief overview of the Markdown-UI DSL syntax. Because it relies heavil
 
 ### Layouts
 - **Containers:** `||| COLUMN |||` for vertical stacking, `=== ROW ===` for flex-row alignment.
-- **Surfaces:** `::: CARD :::` or `::: MODAL :::` for elevated containers.
+- **Surfaces:** `::: CARD :::` or `::: MODAL :::` for elevated containers, `::: BUBBLE USER :::` or `::: BUBBLE AGENT :::` for chat interfaces, and `::: HEADER :::` or `::: FOOTER :::` for structural app navigation.
 - **Boundaries:** End *any* layout block with `--- END ---`.
 - **Dividers:** `***` for horizontal visual breaks.
+- **Agent Directives (Alignment & Spacing):** Use standard Markdown blockquotes (`>`) to give the AI specific layout, alignment, or stylistic hints within a flow.
+  *Example: `> align items to the right` or `> push the avatar to the far right edge`.*
 
 ### Components
 - **Text & Lists:** Use standard Markdown (`#`, `**bold**`, `- list item`). Everything naturally parses.

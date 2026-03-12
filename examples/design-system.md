@@ -25,8 +25,20 @@ This file acts as the styling instructions for the AI Agent. When this file is r
 - **`=== ROW ===`**: Read as a horizontal line. Map to `flex flex-row items-center gap-4 flex-wrap`.
 - **`::: CARD :::`**: Map to a sleek, elevated surface.
   - *Classes:* `bg-white rounded-xl border border-gray-200 shadow-sm p-6`.
+- **`::: HEADER :::`**: Map to a top application bar or global navigation.
+  - *Classes:* `w-full bg-gray-900 text-white px-6 py-4 flex items-center justify-between sticky top-0 z-50 shadow-md`.
+- **`::: FOOTER :::`**: Map to a bottom tab bar or page footer.
+  - *Classes:* `w-full bg-white border-t border-gray-200 px-6 py-4 mt-auto text-sm text-gray-500`.
 - **`***` (Divider)**: Map to a subtle separator.
   - *Classes:* `w-full my-6 border-t border-gray-100`.
+
+### Chat Interfaces (Gemini / Minimal AI Style)
+- **`::: BUBBLE USER :::`**: Treat as a user prompt. Align right, simple bubble.
+  - *Layout:* `flex w-full justify-end my-4`
+  - *Classes:* `max-w-[70%] bg-gray-100 text-gray-900 rounded-2xl md:rounded-3xl p-4 md:px-6 md:py-4 leading-relaxed`
+- **`::: BUBBLE AGENT :::`**: Treat as the AI response. Align left, clear background, often featuring complex structures like code blocks.
+  - *Layout:* `flex w-full justify-start my-4`
+  - *Classes:* `max-w-full md:max-w-[85%] bg-transparent text-gray-800 p-0 md:py-2 leading-relaxed prose prose-emerald prose-pre:bg-gray-900 prose-pre:text-gray-100`
 
 ### Interactive Elements
 - **Buttons (`[ Button ]`)**:
