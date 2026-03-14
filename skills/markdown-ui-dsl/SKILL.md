@@ -4,7 +4,7 @@ description: Create low-fidelity, text-based wireframes using the Markdown-UI Do
 license: MIT
 metadata:
   author: MegaByteMark
-  version: "1.0.2"
+  version: "1.0.3"
 ---
 
 # Role
