@@ -40,46 +40,46 @@ Copilot Agent mode works best when using its explicit Skill architecture. Set it
 1. Initialise your `copilot-instructions.md` by asking Copilot to setup your project for AI agent assistance, or manually create `.github/copilot-instructions.md`.
 2. Create a folder for the skill and download the DSL instructions:
 ```bash
-mkdir -p .github/skills/markdown-ui-agent
-curl -o .github/skills/markdown-ui-agent/SKILL.md https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skill/markdown-ui-agent/SKILL.md
+mkdir -p .github/skills/markdown-ui-dsl
+curl -o .github/skills/markdown-ui-dsl/SKILL.md https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skills/markdown-ui-dsl/SKILL.md
 ```
 3. Open your `.github/copilot-instructions.md` file and add the following mapping:
 ```markdown
 ## Skills
-- For interpreting `ui.md` files, use the `markdown-ui-agent` skill to generate components based on the specifications provided.
+- For interpreting `ui.md` files, use the `markdown-ui-dsl` skill to generate components based on the specifications provided.
 ```
 
 ### 2. Cursor / Roo Code / Cline
 For agents that use single flat rules files, you can append the skill directly:
 ```bash
 # For Cursor (picks up from .cursorrules)
-curl -o .cursorrules https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skill/markdown-ui-agent/SKILL.md
+curl -o .cursorrules https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skills/markdown-ui-dsl/SKILL.md
 
 # For Cline/Roo Code (picks up from .clinerules)
-curl -o .clinerules https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skill/markdown-ui-agent/SKILL.md
+curl -o .clinerules https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skills/markdown-ui-dsl/SKILL.md
 ```
 
 ### 3. Claude Code
 Claude Code automatically looks for a `CLAUDE.md` file in the root of your project to understand project-specific rules and conventions. You can append the skill directly to it:
 ```bash
-curl -s https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skill/markdown-ui-agent/SKILL.md >> CLAUDE.md
+curl -s https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skills/markdown-ui-dsl/SKILL.md >> CLAUDE.md
 ```
 
 ### 4. Gemini CLI
 For Gemini CLI, download the skill into your project and pass it as a system prompt or context flag when running your generation commands:
 ```bash
 mkdir -p .ai/skills
-curl -o .ai/skills/markdown-ui-agent.md https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skill/markdown-ui-agent/SKILL.md
+curl -o .ai/skills/markdown-ui-dsl.md https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skills/markdown-ui-dsl/SKILL.md
 
 # Example usage:
-# gemini query "Build the login UI" --system-prompt .ai/skills/markdown-ui-agent.md
+# gemini query "Build the login UI" --system-prompt .ai/skills/markdown-ui-dsl.md
 ```
 
 ### 5. GPT Codex (and other CLI agents)
 Download the instruction file into your workspace and reference it as a system prompt when initiating your AI codebase session:
 ```bash
 mkdir -p .ai/skills
-curl -o .ai/skills/markdown-ui-agent.md https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skill/markdown-ui-agent/SKILL.md
+curl -o .ai/skills/markdown-ui-dsl.md https://raw.githubusercontent.com/MegaByteMark/markdown-ui-dsl/main/skills/markdown-ui-dsl/SKILL.md
 ```
 
 ## Recommended Project Structure
@@ -89,7 +89,7 @@ To keep your specs organized and cleanly separated from your application code, w
 my-app/
 ├── .github/
 │   ├── copilot-instructions.md
-│   └── skills/markdown-ui-agent/SKILL.md
+│   └── skills/markdown-ui-dsl/SKILL.md
 ├── src/
 │   └── components/
 └── wireframes/
@@ -107,7 +107,7 @@ my-app/
 4. **Iterative Syncing:** When you need to make changes, don't edit the code! Ask the agent: "Add a 'Forgot Password' link to `login-form.ui.md`" — the built-in skill instructions will force the agent to automatically update *both* your UI spec and the targeted code component simultaneously.
 
 ## Syntax Quick Reference
-Here is a brief overview of the Markdown-UI DSL syntax. Because it relies heavily on natural visual metaphors, it's incredibly fast to read and write without looking at a manual. For the exact AI instruction set, see the [skill/markdown-ui-agent/SKILL.md](skill/markdown-ui-agent/SKILL.md) file.
+Here is a brief overview of the Markdown-UI DSL syntax. Because it relies heavily on natural visual metaphors, it's incredibly fast to read and write without looking at a manual. For the exact AI instruction set, see the [skills/markdown-ui-dsl/SKILL.md](skills/markdown-ui-dsl/SKILL.md) file.
 
 ### Layouts
 - **Containers:** `||| COLUMN |||` for vertical stacking, `=== ROW ===` for flex-row alignment.

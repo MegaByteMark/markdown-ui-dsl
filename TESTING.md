@@ -2,7 +2,7 @@
 
 Because Large Language Models (LLMs) are inherently non-deterministic, classic unit testing (like strict exact-string matching) is not effective for testing this DSL. 
 
-Instead, "testing" this project relies on **Structural Evaluation** (often called LLM Evals). If you are contributing to the parsing rules in `skill/markdown-ui-agent/SKILL.md`, you should manually test your changes by running the LLM through a simulated generation task and checking its adherence to the logic.
+Instead, "testing" this project relies on **Structural Evaluation** (often called LLM Evals). If you are contributing to the parsing rules in `skills/markdown-ui-dsl/SKILL.md`, you should manually test your changes by running the LLM through a simulated generation task and checking its adherence to the logic.
 
 ## 🧪 Simulation Testing Strategy
 
@@ -12,7 +12,7 @@ To verify the agent correctly understands the DSL syntax and your specific `desi
 **Objective:** Prove the agent understands layout primitives (`||| COLUMN |||`, `=== ROW ===`) and maps them to the appropriate framework tokens.
 
 **Prompt to the AI:**
-> "Using the `markdown-ui-agent.md` skill, generate the UI component described in `examples/login-form.ui.md`."
+> "Using the `markdown-ui-dsl.md` skill, generate the UI component described in `examples/login-form.ui.md`."
 
 **Evaluation Checklist (Manual or Scripted):**
 - [ ] Did the agent inject a spec reference comment at the top of the file? (e.g. `// UI Spec: wireframes/login-form.ui.md`)
