@@ -2,7 +2,7 @@
 
 Because Large Language Models (LLMs) are inherently non-deterministic, classic unit testing (like strict exact-string matching) is not effective for testing this DSL. 
 
-Instead, "testing" this project relies on **Structural Evaluation** (often called LLM Evals). If you are contributing to the parsing rules in `skill/markdown-ui-agent.md`, you should manually test your changes by running the LLM through a simulated generation task and checking its adherence to the logic.
+Instead, "testing" this project relies on **Structural Evaluation** (often called LLM Evals). If you are contributing to the parsing rules in `skill/markdown-ui-agent/SKILL.md`, you should manually test your changes by running the LLM through a simulated generation task and checking its adherence to the logic.
 
 ## 🧪 Simulation Testing Strategy
 
