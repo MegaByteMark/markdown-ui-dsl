@@ -63,6 +63,49 @@ This file acts as the styling instructions for the AI Agent. When this file is r
   - *ON State:* Green track (`bg-emerald-600`) with knob moved to the right.
   - *OFF State:* Gray track (`bg-gray-200`) with knob on the left.
 
+## 📱 Responsive Design
+
+### Breakpoints
+| Token | Tailwind prefix | Min-width |
+|-------|----------------|-----------|
+| @sm   | `sm:`          | 640px     |
+| @md   | `md:`          | 768px     |
+| @lg   | `lg:`          | 1024px    |
+| @xl   | `xl:`          | 1280px    |
+| @2xl  | `2xl:`         | 1536px    |
+
+### Layout Tokens
+| Token value      | Base classes          | With breakpoint prefix example  |
+|------------------|-----------------------|---------------------------------|
+| `layout: stacked`| `flex flex-col`       | `flex flex-col md:flex-row`     |
+| `layout: row`    | `flex flex-row`       | `flex flex-col sm:flex-row`     |
+| `layout: grid-2` | `grid grid-cols-2`    | `grid grid-cols-1 md:grid-cols-2` |
+| `layout: grid-3` | `grid grid-cols-3`    | `grid grid-cols-1 lg:grid-cols-3` |
+
+### Spacing Tokens
+| Token value        | Classes generated     |
+|--------------------|-----------------------|
+| `padding: compact` | `p-3`                 |
+| `padding: default` | `p-6`                 |
+| `padding: spacious`| `p-10`                |
+| `gap: compact`     | `gap-2`               |
+| `gap: default`     | `gap-4`               |
+| `gap: spacious`    | `gap-8`               |
+
+### Text Tokens
+| Token value    | Classes generated     |
+|----------------|-----------------------|
+| `text: small`  | `text-sm`             |
+| `text: base`   | `text-base`           |
+| `text: large`  | `text-lg`             |
+
+### Generation Rule
+When you encounter `> @<breakpoint> <token>: <value>` directives on a spec block:
+1. Establish the **base classes** from the default component mapping above (smallest breakpoint or no breakpoint directive = base).
+2. For each larger breakpoint directive, prepend the Tailwind breakpoint prefix to the override class.
+3. Combine all classes into a single class string, e.g.: `flex flex-col gap-4 p-3 md:flex-row md:gap-6 md:p-6 lg:p-10`.
+4. Apply mobile-first: `@sm` sets the base when present; omitting `@sm` means the default component mapping is the base.
+
 ## 📐 General Rule of Thumb
 - **Breathe:** Use generous padding (`p-6`) and spacing (`gap-6`) to achieve a clean interface. Never cramp elements.
 - **Component Libraries:** If working in React and instructed to use Shadcn UI in the frontmatter, map these designs back to Shadcn components (e.g., use `<Card>`, `<Input>`, `<Badge>`, and `<Tabs>`) passing in standard Tailwind strings only as optional overrides.

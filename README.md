@@ -15,6 +15,7 @@ A lightweight, text-based wireframing standard designed specifically for AI codi
 - [Workflow](#workflow)
 - [Syntax Quick Reference](#syntax-quick-reference)
 - [Design Theming](#design-theming)
+- [Responsive Design](#responsive-design)
 - [Events & Interactivity](#events--interactivity)
 - [Contributing](#contributing)
 - [License](#license)
@@ -140,6 +141,41 @@ theme: ./design-system.md
 ```
 
 By writing your styling rules, design tokens, and standard CSS classes into a single `design-system.md` file, the AI agent will consistently apply your branding and layout guidelines across every component it generates. Check out the `examples/design-system.md` file for inspiration.
+
+## Responsive Design
+The DSL supports media-query-style responsive behaviour through **responsive directives** — a natural extension of the existing blockquote hint syntax. Prefix any design directive with `@<breakpoint>` to scope it to a specific viewport size:
+
+```markdown
+> @sm layout: stacked, padding: compact
+> @md layout: row, padding: default
+> @lg padding: spacious
+```
+
+The AI agent applies these directives at the specified breakpoints, mapping each token to the correct framework-specific output (e.g., Tailwind responsive prefixes, Flutter `LayoutBuilder`, Bootstrap responsive infixes). The available breakpoint tokens and their token-to-class mappings are defined in your design system file — see the `examples/design-systems/` folder for reference.
+
+**Rules:**
+- Responsive directives always apply to the nearest enclosing layout block or component above them.
+- Multiple `@<breakpoint>` lines can be stacked; they are applied additively from smallest to largest (mobile-first).
+- Omitting a breakpoint directive means the base design system styles apply at that size unchanged.
+- Non-responsive `>` directives (without a `@` prefix) continue to work exactly as before.
+
+**Example — a card that stacks on mobile and goes side-by-side on desktop:**
+```markdown
+::: CARD :::
+> @sm layout: stacked, padding: compact
+> @lg layout: row, padding: default
+
+[ IMG: Product Photo ]
+
+||| COLUMN |||
+## Product Title
+Some description text.
+[ Buy Now ](#purchase)
+--- END ---
+--- END ---
+```
+
+For a full working example see [`examples/responsive-layout.ui.md`](examples/responsive-layout.ui.md).
 
 ## Events & Interactivity
 You do **not** need to map complex state logic, API calls, or event handlers in the UI DSL. That falls outside the scope of a wireframe and belongs in your overarching SDD (Spec-Driven Development) principles or user stories. 

@@ -51,6 +51,43 @@ This file acts as the styling instructions for the AI Agent. When this file is r
 - **Tables**:
   - *Markup:* `<table class="table table-hover table-striped align-middle">`
 
+## 📱 Responsive Design
+
+### Breakpoints (Bootstrap 5)
+| Token | Bootstrap infix | Min-width |
+|-------|----------------|-----------|
+| @sm   | `sm`           | 576px     |
+| @md   | `md`           | 768px     |
+| @lg   | `lg`           | 992px     |
+| @xl   | `xl`           | 1200px    |
+| @xxl  | `xxl`          | 1400px    |
+
+### Layout Tokens
+| Token value       | Bootstrap classes generated                          |
+|-------------------|------------------------------------------------------|
+| `layout: stacked` | `d-flex flex-column`                                 |
+| `layout: row`     | `d-flex flex-{breakpoint}-row flex-column`           |
+| `layout: grid-2`  | `row row-cols-1 row-cols-{breakpoint}-2 g-3`         |
+| `layout: grid-3`  | `row row-cols-1 row-cols-{breakpoint}-3 g-3`         |
+
+### Spacing Tokens
+| Token value        | Bootstrap classes generated |
+|--------------------|-----------------------------|
+| `padding: compact` | `p-2`                       |
+| `padding: default` | `p-4`                       |
+| `padding: spacious`| `p-5`                       |
+| `gap: compact`     | `gap-2`                     |
+| `gap: default`     | `gap-3`                     |
+| `gap: spacious`    | `gap-4`                     |
+
+### Generation Rule
+When you encounter `> @<breakpoint> <token>: <value>` directives, apply Bootstrap's responsive infix pattern:
+1. Use the `@sm` directive (or the default token mapping when absent) as the base class.
+2. For each larger breakpoint, append the infix version: e.g., `flex-column flex-md-row`, `p-2 p-lg-5`.
+3. For grid layouts, apply responsive column counts: `row-cols-1 row-cols-md-2 row-cols-lg-3`.
+
+**Note:** Bootstrap `@` conflicts with Blazor's `@` directive syntax in `.razor` files. Render responsive directives as pure CSS class strings — never emit `@` as a Razor expression when generating classes from this DSL.
+
 ## 📐 General Rule of Thumb
 - Rely entirely on Bootstrap 5 utility classes (`gap-`, `p-`, `m-`, `d-flex`).
 - For dynamic data binding, assume Blazor syntax (`@bind-Value`, `@onclick`, `@foreach`) is intended when referencing components in the UI.

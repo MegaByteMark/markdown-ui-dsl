@@ -69,3 +69,8 @@ component: src/components/LoginForm.tsx
 6. **Comment and Hint Interpretation:**
    - **Comments (`<!-- comment -->`):** Reserved for human collaborators reading/editing the `.ui.md` file. These should be ignored by the AI agent during processing and can include notes, explanations, or TODOs.
    - **Hints via Block Quotes (`> text`):** Used as natural language guidance or suggestions for interpreting or applying design intent. The AI agent should process these as part of the instruction set to contextualize and fine-tune layouts.
+   - **Responsive Directives (`> @<breakpoint> <token>: <value>, ...`):** A blockquote prefixed with `@` followed by a breakpoint token (e.g., `@sm`, `@md`, `@lg`, `@xl`) is a **responsive directive**. It scopes the listed design tokens to that breakpoint and applies to the nearest enclosing layout block or component above it in the spec.
+     - Process responsive directives mobile-first: apply `@sm` as the base, then layer larger breakpoints as overrides.
+     - Map each token-value pair to framework-specific responsive output using the breakpoint table in the active design system file.
+     - Multiple `@<breakpoint>` directives may be stacked; treat each as an additive override at that size.
+     - Non-prefixed `> hints` continue to behave as plain layout/alignment guidance and are unaffected by this rule.
