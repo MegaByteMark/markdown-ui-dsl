@@ -9,7 +9,7 @@ When asked to parse or generate a UI spec, you MUST use the following strict syn
 - **Containers:** Wrap vertical layouts in `||| COLUMN |||` and horizontal layouts in `=== ROW ===`.
 - **Cards/Elevated Surfaces:** Wrap card containers in `::: CARD :::`.
 - **Modals/Dialogs:** Wrap modal surfaces in `::: MODAL :::`.
-- **Structural Regions:** Wrap global app bars or top navs in `::: HEADER :::` and bottom navs or page footers in `::: FOOTER :::`. These should typically use semantic HTML (`<header>`, `<footer>`[...]  
+- **Structural Regions:** Wrap global app bars or top navs in `::: HEADER :::` and bottom navs or page footers in `::: FOOTER :::`. These should typically use semantic HTML (`<header>`, `<footer>`) or sticky positioning.
 - **Chat Bubbles:** Wrap conversational messages in `::: BUBBLE USER :::` or `::: BUBBLE AGENT :::`.
 - **Agent Directives (Alignment & Spacing):** Standard Markdown blockquotes (`> text`) act as natural language layout hints. Apply these hints (like `> align right`, `> space between`) contextuall[...]  
 - **Boundaries:** End a layout block with `--- END ---`.
