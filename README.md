@@ -1,6 +1,7 @@
 # Markdown UI DSL for AI Agents
 
 [![Star on GitHub](https://img.shields.io/github/stars/MegaByteMark/markdown-ui-dsl.svg?style=social)](https://github.com/MegaByteMark/markdown-ui-dsl/stargazers)
+[![OpenClaw Skill](https://img.shields.io/badge/OpenClaw-Hub-blue?logo=github&style=flat-square)](https://openclaw.com/skills/markdown-ui-dsl)
 
 A lightweight, text-based wireframing standard designed specifically for AI coding agents and Spec-Driven Development (SDD).
 
@@ -27,7 +28,13 @@ This project provides a strict Markdown-based Intermediate Representation (IR). 
 ## Installation & Setup
 For the smoothest experience, you should integrate the skill file into your AI agent's specific instruction architecture.
 
-### 1. GitHub Copilot (Agent Mode)
+### 1. OpenClaw Hub (Recommended)
+If your agent supports OpenClaw registry integration, you can install this skill directly via the marketplace. Visit the [Markdown-UI DSL page on OpenClaw Hub](https://openclaw.com/skills/markdown-ui-dsl) for one-click installation or use their CLI:
+```bash
+claw install markdown-ui-dsl
+```
+
+### 2. GitHub Copilot (Agent Mode)
 Copilot Agent mode works best when using its explicit Skill architecture. Set it up using these steps:
 
 1. Initialise your `copilot-instructions.md` by asking Copilot to setup your project for AI agent assistance, or manually create `.github/copilot-instructions.md`.
