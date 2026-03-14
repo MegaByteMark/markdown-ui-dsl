@@ -1,6 +1,6 @@
 ---
 framework: Next.js + TailwindCSS + Shadcn UI
-theme: ./design-system.md
+theme: ./design-systems/web-tailwind.md
 component: src/app/actions/page.tsx
 ---
 

@@ -1,6 +1,6 @@
 ---
 framework: React + Tailwind CSS
-theme: ./design-system.md
+theme: ./design-systems/web-tailwind.md
 component: src/components/LoginForm.tsx
 ---
 

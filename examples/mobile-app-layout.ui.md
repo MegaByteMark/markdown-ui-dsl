@@ -1,7 +1,7 @@
 ---
-framework: React Native / Expo / NativeWind
-theme: ./design-system.md
-component: src/app/(tabs)/index.tsx
+framework: Flutter
+theme: ./design-systems/flutter-material.md
+component: lib/screens/home_screen.dart
 ---
 
 ::: HEADER :::

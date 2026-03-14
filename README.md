@@ -86,7 +86,8 @@ my-app/
 ├── src/
 │   └── components/
 └── wireframes/
-    ├── design-system.md
+    ├── design-systems/
+    │   └── web-tailwind.md
     └── login-form.ui.md
 ```
 

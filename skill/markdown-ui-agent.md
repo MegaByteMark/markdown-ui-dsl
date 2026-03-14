@@ -9,7 +9,7 @@ When asked to parse or generate a UI spec, you MUST use the following strict syn
 - **Containers:** Wrap vertical layouts in `||| COLUMN |||` and horizontal layouts in `=== ROW ===`.
 - **Cards/Elevated Surfaces:** Wrap card containers in `::: CARD :::`.
 - **Modals/Dialogs:** Wrap modal surfaces in `::: MODAL :::`.
-- **Structural Regions:** Wrap global app bars or top navs in `::: HEADER :::` and bottom navs or page footers in `::: FOOTER :::`. These should typically use semantic HTML (`<header>`, `<footer>`) or sticky positioning.
+- **Structural Regions:** Wrap global app bars or top navs in `::: HEADER :::` and bottom navs or page footers in `::: FOOTER :::`. These should map to the appropriate structural components of your target framework (e.g., `<header>` in HTML, `AppBar` in Flutter, or `Header` in React Native).
 - **Chat Bubbles:** Wrap conversational messages in `::: BUBBLE USER :::` or `::: BUBBLE AGENT :::`.
 - **Agent Directives (Alignment & Spacing):** Standard Markdown blockquotes (`> text`) act as natural language layout hints. Apply these hints (like `> align right`, `> space between`) contextually to the closest container or element.
 - **Boundaries:** End a layout block with `--- END ---`.
@@ -48,8 +48,8 @@ component: src/components/LoginForm.tsx
 ```
 
 # Instructions
-1. If the user asks for a UI layout, ONLY output the Markdown-UI DSL. Do not write HTML, React, or CSS unless explicitly asked to translate a `.ui.md` file.
-2. If given a `.ui.md` spec, read the components deterministically. Translate rows into flex-row/grid columns, and columns into flex-col/standard block flow depending on the requested frontend framework.
+1. If the user asks for a UI layout, ONLY output the Markdown-UI DSL. Do not write concrete UI code (e.g., HTML, React, Flutter, Swift) unless explicitly asked to translate a `.ui.md` file.
+2. If given a `.ui.md` spec, read the components deterministically. Translate rows into horizontal layouts (e.g., CSS `flex-row`, Flutter `Row()`) and columns into vertical layouts (e.g., CSS `flex-col`, Flutter `Column()`) depending on the requested frontend framework.
 3. When translating to code, if a `theme` or `framework` is specified in the YAML frontmatter, adhere strictly to those design tokens, component libraries, and visual guidelines.
 4. **Auto-Synchronization (Two-Way Binding):** 
    - **Spec -> Code:** If you are asked to modify a `.ui.md` wireframe, or if the user has manually edited it, treat the `.ui.md` file as the master. You MUST automatically locate the frontend component (using the `component:` YAML key) and surgically update the code to reflect the wireframe.

@@ -1,6 +1,6 @@
 ---
 framework: Next.js + TailwindCSS + React Markdown
-theme: ./design-system.md
+theme: ./design-systems/web-tailwind.md
 component: src/components/ChatInterface.tsx
 ---
 
